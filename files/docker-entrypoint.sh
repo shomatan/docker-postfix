@@ -9,16 +9,16 @@ echo "** Preparing main.cf"
 postconf -e myhostname="${POSTFIX_HOSTNAME}"
 postconf -e mydomain="${POSTFIX_DOMAIN}"
 postconf -e inet_interfaces="${POSTFIX_INET_INTERFACES}"
-
 postconf -e mydestination='localhost.$mydomain, localhost'
 postconf -e home_mailbox="Maildir/"
-
-postconf -e smtpd_sasl_auth_enable=yes
-postconf -e smtpd_recipient_restrictions="permit_mynetworks permit_sasl_authenticated reject_unauth_destination"
-
 postconf -e smtpd_banner="\$myhostname ESMTP unknown"
 postconf -e message_size_limit=10485760
-
+# sasl
+postconf -e smtpd_sasl_auth_enable=yes
+postconf -e smtpd_sasl_local_domain='$mydomain'
+postconf -e smtpd_recipient_restrictions="permit_mynetworks permit_sasl_authenticated reject_unauth_destination"
+postconf -e smtpd_sasl_security_options="noanonymous,noplaintext"
+# virtual mailbox
 postconf -e virtual_mailbox_domains="${POSTFIX_VDOMAINS}"
 postconf -e virtual_mailbox_base=/var/mail/vhosts
 postconf -e virtual_mailbox_maps=hash:/etc/postfix/vmailbox

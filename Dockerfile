@@ -12,7 +12,9 @@ RUN set -ex \
         postfix=3.1.3-r0 \
         mailx=8.1.1-r1 \
         opendkim=2.10.3-r4 \
-        cyrus-sasl=2.1.26-r8
+        cyrus-sasl=2.1.26-r8 \
+        cyrus-sasl-crammd5=2.1.26-r8 \
+        cyrus-sasl-digestmd5=2.1.26-r8
 
 RUN set -ex \
     && addgroup -S vpostfix -g 1000 \
@@ -20,7 +22,8 @@ RUN set -ex \
     && touch /etc/postfix/valias \
     && touch /etc/postfix/vmailbox \
     && mkdir -p /var/mail/vhosts \
-    && chown -R vpostfix:vpostfix /var/mail
+    && chown -R vpostfix:vpostfix /var/mail \
+    && echo 'pwcheck_method: auxprop' > /usr/lib/sasl2/smtpd.conf
 
 ADD files/docker-entrypoint.sh /
 
