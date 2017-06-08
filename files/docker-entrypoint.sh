@@ -27,6 +27,8 @@ postconf -e virtual_minimum_uid=1000
 postconf -e virtual_uid_maps=static:1000
 postconf -e virtual_gid_maps=static:1000
 
+chown root:root /etc/postfix/vmailbox
+
 newaliases
 postmap /etc/postfix/vmailbox
 postmap /etc/postfix/valias
