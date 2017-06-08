@@ -37,6 +37,11 @@ postmap /etc/postfix/valias
 
 #echo "** Preparing OpenDKIM"
 
+echo "** Preparing sasl DB"
+if [ -e /etc/sasldb2 ]; then
+    chgrp postfix /etc/sasldb2
+fi
+
 echo "########################################################"
 
 echo "** Executing postfix and syslog"
