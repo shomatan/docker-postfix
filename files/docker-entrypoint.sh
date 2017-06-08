@@ -26,6 +26,8 @@ postconf -e virtual_alias_maps=hash:/etc/postfix/valias
 postconf -e virtual_minimum_uid=1000
 postconf -e virtual_uid_maps=static:1000
 postconf -e virtual_gid_maps=static:1000
+# Disable EAI support
+postconf -e smtputf8_enable=no
 
 chown root:root /etc/postfix/vmailbox
 
@@ -35,6 +37,9 @@ postmap /etc/postfix/valias
 
 #echo "** Preparing OpenDKIM"
 
+echo "########################################################"
+
+echo "** Executing postfix and syslog"
 
 touch /var/log/maillog
 rsyslogd ; postfix start
