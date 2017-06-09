@@ -28,6 +28,11 @@ postconf -e virtual_uid_maps=static:1000
 postconf -e virtual_gid_maps=static:1000
 # Disable EAI support
 postconf -e smtputf8_enable=no
+# TLS
+postconf -e smtpd_use_tls=yes
+postconf -e smtp_tls_security_level=may
+postconf -e smtpd_tls_cert_file=/etc/postfix/ssl.cert
+postconf -e smtpd_tls_key_file=/etc/postfix/ssl.key
 
 chown root:root /etc/postfix/vmailbox
 
