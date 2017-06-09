@@ -43,9 +43,15 @@ postmap /etc/postfix/valias
 #echo "** Preparing OpenDKIM"
 
 echo "** Preparing sasl DB"
-if [ -e /etc/sasldb2 ]; then
-    chgrp postfix /etc/sasldb2
+if [ ! -e /etc/postfix/sasl/sasldb2 ]; then
+    mkdir /etc/postfix/sasl
+    # Create init user
+    echo 'test' | saslpasswd2 -f /etc/postfix/sasl/sasldb2 -c -u test test
+    # Disable init user
+    saslpasswd2 -f /etc/postfix/sasl/sasldb2 -d test
+    ln -sf /etc/postfix/sasl/sasldb2 /etc/sasldb2
 fi
+chgrp postfix /etc/sasldb2
 
 echo "########################################################"
 
