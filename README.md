@@ -13,3 +13,7 @@ Mail Transfer Agent image based on Alpine Linux.
 #### /etc/postfix/vmailbox
 
     shoma@example.com example.com/shoma/ # <- Add slash enabled Maildir format
+
+#### Create auth password
+    
+    docker exec -it postfix saslpasswd2 -c -u ${POSTFIX_DOMAIN} ${USERNAME}
