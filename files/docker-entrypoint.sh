@@ -13,7 +13,8 @@ postconf -e mydestination='localhost.$mydomain, localhost'
 postconf -e home_mailbox="Maildir/"
 postconf -e smtpd_banner="\$myhostname ESMTP unknown"
 postconf -e message_size_limit=10485760
-postconf -e default_privs="nobody"
+postconf -e default_privs=nobody
+postconf -e transport_maps=hash:/etc/postfix/transport
 # sasl
 postconf -e smtpd_sasl_auth_enable=yes
 postconf -e smtpd_sasl_local_domain='$mydomain'
