@@ -40,6 +40,7 @@ chown root:root /etc/postfix/vmailbox
 newaliases
 postmap /etc/postfix/vmailbox
 postmap /etc/postfix/valias
+postmap /etc/postfix/transport
 
 #echo "** Preparing OpenDKIM"
 
