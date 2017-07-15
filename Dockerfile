@@ -26,10 +26,8 @@ RUN set -ex \
     && chown -R vpostfix:vpostfix /var/mail \
     && echo 'pwcheck_method: auxprop' > /usr/lib/sasl2/smtpd.conf
 
-ADD files/docker-entrypoint.sh /
+ADD docker-entrypoint.sh /
 
 EXPOSE 25 587
 
-ENTRYPOINT ["/bin/sh"]
-
-CMD ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/docker-entrypoint.sh"]

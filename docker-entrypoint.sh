@@ -1,3 +1,6 @@
+#!/bin/sh
+#
+# -----------------------------------------------------------------------------
 set +e
 
 POSTFIX_VDOMAINS=${POSTFIX_VDOMAINS:-"${POSTFIX_HOSTNAME}"}
