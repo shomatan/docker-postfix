@@ -22,6 +22,7 @@ RUN set -ex \
     && touch /etc/postfix/valias \
     && touch /etc/postfix/vmailbox \
     && mkdir -p /var/mail/vhosts \
+    && mkdir -p /etc/postfix/ssl \
     && chown -R vpostfix:vpostfix /var/mail \
     && echo 'pwcheck_method: auxprop' > /usr/lib/sasl2/smtpd.conf
 
