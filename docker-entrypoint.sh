@@ -3,8 +3,6 @@
 # -----------------------------------------------------------------------------
 set +e
 
-POSTFIX_VDOMAINS=${POSTFIX_VDOMAINS:-"${POSTFIX_HOSTNAME}"}
-
 echo "** Preparing Postfix"
 
 echo "** Preparing main.cf"

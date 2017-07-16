@@ -2,7 +2,7 @@ FROM alpine:3.5
 
 MAINTAINER Shoma Nishitateno <shoma416@gmail.com>
 
-ENV POSTFIX_HOSTNAME=mail.example.com POSTFIX_DOMAIN=example.com POSTFIX_INET_INTERFACES=all
+ENV POSTFIX_HOSTNAME=mail.example.com POSTFIX_DOMAIN=example.com POSTFIX_INET_INTERFACES=all POSTFIX_VDOMAINS="${POSTFIX_HOSTNAME}"
 
 RUN set -ex \
     && apk update \
