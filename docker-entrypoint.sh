@@ -37,8 +37,8 @@ postconf -e smtputf8_enable=no
 # TLS
 postconf -e smtpd_use_tls=yes
 postconf -e smtp_tls_security_level=may
-postconf -e smtpd_tls_cert_file=/etc/postfix/ssl/ssl.cert
-postconf -e smtpd_tls_key_file=/etc/postfix/ssl/ssl.key
+postconf -e smtpd_tls_cert_file="${POSTFIX_TLS_CERT_FILE}"
+postconf -e smtpd_tls_key_file="${POSTFIX_TLS_KEY_FILE}"
 
 chown root:root /etc/postfix/vmailbox
 

@@ -7,6 +7,8 @@ Mail Transfer Agent image based on Alpine Linux.
 - POSTFIX_HOSTNAME
 - POSTFIX_DOMAIN
 - POSTFIX_VDOMAINS
+- POSTFIX_TLS_CERT_FILE
+- POSTFIX_TLS_KEY_FILE
 
 ### Note
 
