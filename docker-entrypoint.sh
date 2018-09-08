@@ -41,6 +41,7 @@ postconf -e smtpd_tls_cert_file="${POSTFIX_TLS_CERT_FILE}"
 postconf -e smtpd_tls_key_file="${POSTFIX_TLS_KEY_FILE}"
 
 chown root:root /etc/postfix/vmailbox
+chown root:root /etc/postfix/transport
 
 newaliases
 postmap /etc/postfix/vmailbox
